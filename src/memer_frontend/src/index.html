@@ -2,111 +2,73 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Mint App</title>
-		<style>
-			body {
-				font-family: Arial, sans-serif;
-				margin: 20px;
-			}
-
-			.component {
-				margin-bottom: 20px;
-			}
-
-			input {
-				padding: 8px;
-				margin-right: 10px;
-			}
-
-			button {
-				padding: 8px 12px;
-				cursor: pointer;
-			}
-
-			#viewDiv {
-				display: none;
-				margin-top: 20px;
-			}
-		</style>
-		<script src="index.js"></script>
+		<meta name="viewport" content="width=device-width" />
+		<title>memer</title>
+		<base href="/" />
+		<link rel="icon" href="favicon.ico" />
+		<link type="text/css" rel="stylesheet" href="main.css" />
 	</head>
 	<body>
-		<!-- Mint Component -->
-		<form id="mintForm" class="component">
-			<h2>Mint</h2>
-			<label for="mintText1">Uint8Array:</label>
-			<input
-				type="text"
-				id="mintText1"
-				placeholder="Enter Uint8Array"
-				required
-			/>
-			<br />
-			<label for="mintText2">Name:</label>
-			<input type="text" id="mintText2" placeholder="Enter Name" required />
-			<br />
-			<button type="submit" class="mint">Mint</button>
-		</form>
+		<main>
+			<!-- Mint Component -->
+			<form id="mintForm" class="component">
+				<h2>Mint</h2>
+				<label for="mintText1">Uint8Array:</label>
+				<input
+					type="text"
+					id="mintText1"
+					placeholder="Enter Uint8Array"
+					required
+				/>
+				<br />
+				<label for="mintText2">Name:</label>
+				<input type="text" id="mintText2" placeholder="Enter Name" required />
+				<br />
+				<button type="submit" class="mint">Mint</button>
+			</form>
 
-		<!-- IsListed Component -->
-		<form id="isListedForm">
-			<h2>Is Listed</h2>
-			<input
-				type="text"
-				id="listedPrincipalId"
-				placeholder="Enter Principal Id"
-			/>
-			<button type="submit">Check</button>
-		</form>
+			<!-- IsListed Component -->
+			<form id="isListedForm">
+				<h2>Is Listed</h2>
+				<input
+					type="text"
+					id="listedPrincipalId"
+					placeholder="Enter Principal Id"
+				/>
+				<button type="submit">Check</button>
+			</form>
 
-		<!-- Add Ownership Component -->
-		<form id="addOwnershipForm" class="component">
-			<h2>Add Ownership</h2>
-			<input type="text" id="addOwnershipText1" placeholder="Enter Text 1" />
-			<input type="text" id="addOwnershipText2" placeholder="Enter Text 2" />
-			<button type="submit">Add Ownership</button>
-		</form>
+			<form id="getOwnerForm" class="component">
+				<h2>Get Owner</h2>
+				<input type="text" id="MemeIdForOwner" placeholder="enter meme's id" />
+				<button type="submit">Get Owner</button>
+			</form>
 
-		<form id="getOwnerForm" class="component">
-			<h2>Get Owner</h2>
-			<input type="text" id="getOwnerText" placeholder="Enter Text" />
-			<button type="submit">Get Owner</button>
-		</form>
+			<form id="getYourIdForm" class="component">
+				<h2>Your Id</h2>
+				<button type="submit">Get Your Id</button>
+			</form>
 
-		<form id="getMintListingForm" class="component">
-			<h2>Get Mint Listing</h2>
-			<input type="text" id="getMintListingText" placeholder="Enter Text" />
-			<button type="submit">Get Listing</button>
-		</form>
+			<form id="getAllListingForm" class="component">
+				<h2>All Meme Listings</h2>
+				<button type="submit">search</button>
+			</form>
 
-		<form id="getMintIdForm" class="component">
-			<h2>Get Mint ID</h2>
-			<input type="text" id="getMintIdText" placeholder="Enter Text" />
-			<button type="submit">Get Mint ID</button>
-		</form>
+			<form id="getCanisterIdForm" class="component">
+				<h2>self canister Id</h2>
+				<button type="submit">search</button>
+			</form>
 
-		<form id="getYourIdForm" class="component">
-			<button type="submit">Get Your ID</button>
-		</form>
+			<form id="getAllMemesForm" class="component">
+				<h2>All Memes</h2>
+				<button type="submit">search</button>
+			</form>
 
-		<form id="getExistingForm" class="component">
-			<button type="submit">Get Existing</button>
-			<div id="viewDiv"></div>
-		</form>
-
-		<form id="getOriginalForm" class="component">
-			<h2>Get Original</h2>
-			<input type="text" id="getOriginalText" placeholder="Enter Text" />
-			<button type="submit">Get Original</button>
-		</form>
-
-		<form id="getListedMemesForm" class="component">
-			<button type="submit">Get Listed Memes</button>
-		</form>
-
-		<div>
-			<button class="myButton">Click me</button>
-		</div>
+			<form id="getOwnedMemesForm" class="component">
+				<h2>Memes owned by:</h2>
+				<input type="text" id="OwnerId" placeholder="enter meme's id" />
+				<button type="submit">search</button>
+			</form>
+		</main>
 	</body>
 </html>
