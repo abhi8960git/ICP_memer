@@ -45,7 +45,6 @@ document
 
 //Mint
 const mintForm = document.getElementById("mintForm");
-console.log(mintForm);
 mintForm.addEventListener("submit", async (event) => {
 	event.preventDefault();
 
@@ -107,6 +106,92 @@ if (document.querySelector("#getOwnerForm")) {
 			button.removeAttribute("disabled");
 
 			console.log(owner);
+
+			return false;
+		});
+}
+
+//getAllListingForm
+if (document.querySelector("#getAllListingForm")) {
+	document
+		.querySelector("#getAllListingForm")
+		.addEventListener("submit", async (e) => {
+			e.preventDefault();
+			const button = e.target.querySelector("button");
+
+			button.setAttribute("disabled", true);
+
+			// Interact with foo actor, calling the greet method
+			const listedMemes = await memera.getListedMemes();
+
+			button.removeAttribute("disabled");
+
+			console.log(listedMemes);
+
+			return false;
+		});
+}
+
+//getCanistertID
+if (document.querySelector("#getCanisterIdForm")) {
+	document
+		.querySelector("#getCanisterIdForm")
+		.addEventListener("submit", async (e) => {
+			e.preventDefault();
+			const button = e.target.querySelector("button");
+
+			button.setAttribute("disabled", true);
+
+			// Interact with foo actor, calling the greet method
+			const Id = await memera.getMemeraCanisterId();
+
+			button.removeAttribute("disabled");
+
+			console.log(Id);
+
+			return false;
+		});
+}
+
+//getAllMemes
+if (document.querySelector("#getAllMemesForm")) {
+	document
+		.querySelector("#getAllMemesForm")
+		.addEventListener("submit", async (e) => {
+			e.preventDefault();
+			const button = e.target.querySelector("button");
+
+			button.setAttribute("disabled", true);
+
+			// Interact with foo actor, calling the greet method
+			const Id = await memera.getExistingMemes();
+
+			button.removeAttribute("disabled");
+
+			console.log(Id);
+
+			return false;
+		});
+}
+
+//getOwnedMemes
+if (document.querySelector("#getOwnedMemesForm")) {
+	document
+		.querySelector("#getOwnedMemesForm")
+		.addEventListener("submit", async (e) => {
+			e.preventDefault();
+			const button = e.target.querySelector("button");
+
+			const Id = document.getElementById("OwnerId").value.toString();
+
+			button.setAttribute("disabled", true);
+
+			// Interact with foo actor, calling the greet method
+			const memes = await memera.getOwnedMemes(Principal.fromText(Id));
+
+			button.removeAttribute("disabled");
+
+			console.log(memes);
 
 			return false;
 		});
