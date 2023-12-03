@@ -1,157 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mint App</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mint App</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 20px;
+			}
 
-    .component {
-      margin-bottom: 20px;
-    }
+			.component {
+				margin-bottom: 20px;
+			}
 
-    input {
-      padding: 8px;
-      margin-right: 10px;
-    }
+			input {
+				padding: 8px;
+				margin-right: 10px;
+			}
 
-    button {
-      padding: 8px 12px;
-      cursor: pointer;
-    }
+			button {
+				padding: 8px 12px;
+				cursor: pointer;
+			}
 
-    #viewDiv {
-      display: none;
-      margin-top: 20px;
-    }
-  </style>
-  <script src="index.js"></script>
-</head>
-<body>
+			#viewDiv {
+				display: none;
+				margin-top: 20px;
+			}
+		</style>
+		<script src="index.js"></script>
+	</head>
+	<body>
+		<!-- Mint Component -->
+		<form id="mintForm" class="component">
+			<h2>Mint</h2>
+			<label for="mintText1">Uint8Array:</label>
+			<input
+				type="text"
+				id="mintText1"
+				placeholder="Enter Uint8Array"
+				required
+			/>
+			<br />
+			<label for="mintText2">Name:</label>
+			<input type="text" id="mintText2" placeholder="Enter Name" required />
+			<br />
+			<button type="submit" class="mint">Mint</button>
+		</form>
 
-  <!-- Mint Component -->
-  <form id="mintForm" class="component">
-    <h2>Mint</h2>
-    <label for="mintText1">Uint8Array:</label>
-    <input type="text" id="mintText1" placeholder="Enter Uint8Array" required>
-    <br>
-    <label for="mintText2">Name:</label>
-    <input type="text" id="mintText2" placeholder="Enter Name" required>
-    <br>
-    <button type="submit" class="mint">Mint</button>
-  </form>
+		<!-- IsListed Component -->
+		<form id="isListedForm">
+			<h2>Is Listed</h2>
+			<input
+				type="text"
+				id="listedPrincipalId"
+				placeholder="Enter Principal Id"
+			/>
+			<button type="submit">Check</button>
+		</form>
 
-  <!-- IsListed Component -->
-  <div class="component" id="isListedComponent">
-    <h2>Is Listed</h2>
-    <input type="text" id="isListedText" placeholder="Enter Text">
-    <button onclick="isListed()">Check</button>
-  </div>
+		<!-- Add Ownership Component -->
+		<form id="addOwnershipForm" class="component">
+			<h2>Add Ownership</h2>
+			<input type="text" id="addOwnershipText1" placeholder="Enter Text 1" />
+			<input type="text" id="addOwnershipText2" placeholder="Enter Text 2" />
+			<button type="submit">Add Ownership</button>
+		</form>
 
-  <!-- Add Ownership Component -->
-  <div class="component" id="addOwnershipComponent">
-    <h2>Add Ownership</h2>
-    <input type="text" id="addOwnershipText1" placeholder="Enter Text 1">
-    <input type="text" id="addOwnershipText2" placeholder="Enter Text 2">
-    <button onclick="addOwnership()">Add Ownership</button>
-  </div>
+		<form id="getOwnerForm" class="component">
+			<h2>Get Owner</h2>
+			<input type="text" id="getOwnerText" placeholder="Enter Text" />
+			<button type="submit">Get Owner</button>
+		</form>
 
-  <!-- Get Owner Component -->
-  <div class="component" id="getOwnerComponent">
-    <h2>Get Owner</h2>
-    <input type="text" id="getOwnerText" placeholder="Enter Text">
-    <button onclick="getOwner()">Get Owner</button>
-  </div>
+		<form id="getMintListingForm" class="component">
+			<h2>Get Mint Listing</h2>
+			<input type="text" id="getMintListingText" placeholder="Enter Text" />
+			<button type="submit">Get Listing</button>
+		</form>
 
-  <!-- Get Mint Listing Component -->
-  <div class="component" id="getMintListingComponent">
-    <h2>Get Mint Listing</h2>
-    <input type="text" id="getMintListingText" placeholder="Enter Text">
-    <button onclick="getMintListing()">Get Listing</button>
-  </div>
+		<form id="getMintIdForm" class="component">
+			<h2>Get Mint ID</h2>
+			<input type="text" id="getMintIdText" placeholder="Enter Text" />
+			<button type="submit">Get Mint ID</button>
+		</form>
 
-  <!-- Get Mint ID Component -->
-  <div class="component" id="getMintIdComponent">
-    <h2>Get Mint ID</h2>
-    <input type="text" id="getMintIdText" placeholder="Enter Text">
-    <button onclick="getMintId()">Get Mint ID</button>
-  </div>
+		<form id="getYourIdForm" class="component">
+			<button type="submit">Get Your ID</button>
+		</form>
 
-  <!-- Get Your ID Button -->
-  <div class="component" id="getYourIdComponent">
-    <button onclick="getYourId()">Get Your ID</button>
-  </div>
+		<form id="getExistingForm" class="component">
+			<button type="submit">Get Existing</button>
+			<div id="viewDiv"></div>
+		</form>
 
-  <!-- Get Existing Button and ViewDiv -->
-  <div class="component" id="getExistingComponent">
-    <button onclick="getExisting()">Get Existing</button>
-    <div id="viewDiv"></div>
-  </div>
+		<form id="getOriginalForm" class="component">
+			<h2>Get Original</h2>
+			<input type="text" id="getOriginalText" placeholder="Enter Text" />
+			<button type="submit">Get Original</button>
+		</form>
 
-  <!-- Get Original Component -->
-  <div class="component" id="getOriginalComponent">
-    <h2>Get Original</h2>
-    <input type="text" id="getOriginalText" placeholder="Enter Text">
-    <button onclick="getOriginal()">Get Original</button>
-  </div>
+		<form id="getListedMemesForm" class="component">
+			<button type="submit">Get Listed Memes</button>
+		</form>
 
-  <!-- Get Listed Memes Component -->
-  <div class="component" id="getListedMemesComponent">
-    <button onclick="getListedMemes()">Get Listed Memes</button>
-  </div>
-
-  <div>
-    <button class="myButton">Click me</button>
-  </div>
-
-  <script>
-    // JavaScript functions for each component
-    function mint() {
-      // Your implementation for mint
-    }
-
-    function isListed() {
-      // Your implementation for isListed
-    }
-
-    function addOwnership() {
-      // Your implementation for addOwnership
-    }
-
-    function getOwner() {
-      // Your implementation for getOwner
-    }
-
-    function getMintListing() {
-      // Your implementation for getMintListing
-    }
-
-    function getMintId() {
-      // Your implementation for getMintId
-    }
-
-    function getYourId() {
-      // Your implementation for getYourId
-    }
-
-    function getExisting() {
-      // Your implementation for getExisting
-      document.getElementById('viewDiv').innerHTML = 'Elements will render here.';
-      document.getElementById('viewDiv').style.display = 'block';
-    }
-
-    function getOriginal() {
-      // Your implementation for getOriginal
-    }
-
-    function getListedMemes() {
-      // Your implementation for getListedMemes
-    }
-  </script>
-
-</body>
+		<div>
+			<button class="myButton">Click me</button>
+		</div>
+	</body>
 </html>
