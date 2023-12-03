@@ -1,0 +1,38 @@
+ <script>
+      // JavaScript functions for each component
+
+      function isListed() {
+        // Your implementation for isListed
+      }
+
+      function addOwnership() {
+        // Your implementation for addOwnership
+      }
+
+      function getOwner() {
+        // Your implementation for getOwner
+      }
+
+      function getMintListing() {
+        // Your implementation for getMintListing
+      }
+
+      function getMintId() {
+        // Your implementation for getMintId
+      }
+
+      function getExisting() {
+        // Your implementation for getExisting
+        document.getElementById("viewDiv").innerHTML =
+          "Elements will render here.";
+        document.getElementById("viewDiv").style.display = "block";
+      }
+
+      function getOriginal() {
+        // Your implementation for getOriginal
+      }
+
+      function getListedMemes() {
+        // Your implementation for getListedMemes
+      }
+    </script>

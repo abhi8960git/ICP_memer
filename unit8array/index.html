@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Picture</title>
+</head>
+<body>
+
+  <input type="file" id="imageInput" accept="image/*">
+  <button onclick="processImage()">Process Image</button>
+
+  <script>
+    async function processImage() {
+      const fileInput = document.getElementById('imageInput');
+      const file = fileInput.files[0];
+
+      if (file) {
+        try {
+          const image = await readImage(file);
+          const uint8Array = convertImageToUint8Array(image);
+          console.log(uint8Array);
+        } catch (error) {
+          console.error(error);
+        }
+      } else {
+        console.error("Please select an image file.");
+      }
+    }
+
+    function readImage(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+          const img = new Image();
+          img.onload = function () {
+            resolve(img);
+          };
+          img.src = event.target.result;
+        };
+
+        reader.onerror = function (error) {
+          reject(error);
+        };
+
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function convertImageToUint8Array(image) {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+
+      canvas.width = image.width;
+      canvas.height = image.height;
+
+      context.drawImage(image, 0, 0, image.width, image.height);
+
+      const imageData = context.getImageData(0, 0, image.width, image.height);
+      const uint8Array = new Uint8Array(imageData.data);
+
+      return uint8Array;
+    }
+  </script>
+
+</body>
+</html>

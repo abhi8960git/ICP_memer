@@ -1,0 +1,33 @@
+{
+  "canisters": {
+    "memera": {
+      "main": "src/memer_backend/main.mo",
+      "type": "motoko"
+    },
+    "meme": {
+      "main": "src/memer_backend/meme.mo",
+      "type": "motoko"
+    },
+    "memer_frontend": {
+      "dependencies": [
+        "memera"
+      ],
+      "frontend": {
+        "entrypoint": "src/memer_frontend/src/index.html"
+      },
+      "source": [
+        "src/memer_frontend/assets",
+        "dist/memer_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
